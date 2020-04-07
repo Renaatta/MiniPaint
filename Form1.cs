@@ -27,11 +27,19 @@ namespace WindowsFormsApp1
             openFileDialog.Filter = saveFileDialog.Filter = "Grafika BMP|*.bmp|Grafika PNG|*.png|Grafika JPG|*.jpg";
             myPen = new Pen(buttonColor.BackColor, (float)numericUpDownWidth.Value);
             myPen.EndCap = myPen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
+            nowyToolStripMenuItem_Click(null, null);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void nowyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBoxMyImage.Image = new Bitmap(800, 600);
+            graphics = Graphics.FromImage(pictureBoxMyImage.Image);
+            graphics.Clear(Color.White);
         }
 
         private void otwórzToolStripMenuItem_Click(object sender, EventArgs e)
@@ -70,8 +78,6 @@ namespace WindowsFormsApp1
         {
             if(e.Button == MouseButtons.Left)
             {
-                //graphics.DrawEllipse(new Pen(Color.Red), e.X, e.Y, 20, 20);
-                //pictureBoxMyImage.Refresh();
                 tmpPoint = e.Location;
             }
         }
@@ -80,15 +86,45 @@ namespace WindowsFormsApp1
         {
             if (e.Button == MouseButtons.Left)
             {
-                graphics.DrawLine(myPen, tmpPoint, e.Location);
-                pictureBoxMyImage.Refresh();
+                if(radioButtonCurve.Checked)
+                {
+                    graphics.DrawLine(myPen, tmpPoint, e.Location);
+                    pictureBoxMyImage.Refresh();
+                    tmpPoint = e.Location;
+                }
             }
-            tmpPoint = e.Location;   
         }
 
         private void pictureBoxMyImage_MouseUp(object sender, MouseEventArgs e)
         {
-
+            if (e.Button == MouseButtons.Left)
+            {
+                if (radioButtonCurve.Checked)
+                {
+                    graphics.DrawLine(myPen, tmpPoint, e.Location);
+                }
+                else if (radioButtonLine.Checked)
+                {
+                    graphics.DrawLine(myPen, tmpPoint, e.Location);
+                }
+                else if (radioButtonRectangle.Checked)
+                {
+                    graphics.DrawRectangle(myPen, 
+                                           Math.Min(tmpPoint.X, e.X), 
+                                           Math.Min(tmpPoint.Y, e.Y),
+                                           Math.Abs(tmpPoint.X - e.X),
+                                           Math.Abs(tmpPoint.Y - e.Y));
+                }
+                else if (radioButtonElipse.Checked)
+                {
+                    graphics.DrawEllipse(myPen,
+                                           Math.Min(tmpPoint.X, e.X),
+                                           Math.Min(tmpPoint.Y, e.Y),
+                                           Math.Abs(tmpPoint.X - e.X),
+                                           Math.Abs(tmpPoint.Y - e.Y));
+                }
+                pictureBoxMyImage.Refresh();
+            }
         }
 
         private void numericUpDownWidth_ValueChanged(object sender, EventArgs e)

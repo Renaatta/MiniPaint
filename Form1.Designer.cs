@@ -43,12 +43,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.buttonColor = new System.Windows.Forms.Button();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radioButtonCurve = new System.Windows.Forms.RadioButton();
+            this.radioButtonLine = new System.Windows.Forms.RadioButton();
+            this.radioButtonRectangle = new System.Windows.Forms.RadioButton();
+            this.radioButtonElipse = new System.Windows.Forms.RadioButton();
+            this.nowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMyImage)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWidth)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxMyImage
@@ -83,6 +90,7 @@
             // plikToolStripMenuItem
             // 
             this.plikToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nowyToolStripMenuItem,
             this.otwórzToolStripMenuItem,
             this.zapiszJakoToolStripMenuItem});
             this.plikToolStripMenuItem.Name = "plikToolStripMenuItem";
@@ -120,6 +128,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
@@ -191,6 +200,68 @@
             this.buttonColor.UseVisualStyleBackColor = false;
             this.buttonColor.Click += new System.EventHandler(this.buttonColor_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.radioButtonElipse);
+            this.groupBox2.Controls.Add(this.radioButtonRectangle);
+            this.groupBox2.Controls.Add(this.radioButtonLine);
+            this.groupBox2.Controls.Add(this.radioButtonCurve);
+            this.groupBox2.Location = new System.Drawing.Point(0, 109);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(144, 178);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Kształt";
+            // 
+            // radioButtonCurve
+            // 
+            this.radioButtonCurve.AutoSize = true;
+            this.radioButtonCurve.Checked = true;
+            this.radioButtonCurve.Location = new System.Drawing.Point(4, 26);
+            this.radioButtonCurve.Name = "radioButtonCurve";
+            this.radioButtonCurve.Size = new System.Drawing.Size(84, 24);
+            this.radioButtonCurve.TabIndex = 0;
+            this.radioButtonCurve.TabStop = true;
+            this.radioButtonCurve.Text = "Krzywa";
+            this.radioButtonCurve.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonLine
+            // 
+            this.radioButtonLine.AutoSize = true;
+            this.radioButtonLine.Location = new System.Drawing.Point(4, 63);
+            this.radioButtonLine.Name = "radioButtonLine";
+            this.radioButtonLine.Size = new System.Drawing.Size(80, 24);
+            this.radioButtonLine.TabIndex = 1;
+            this.radioButtonLine.Text = "Prosta";
+            this.radioButtonLine.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonRectangle
+            // 
+            this.radioButtonRectangle.AutoSize = true;
+            this.radioButtonRectangle.Location = new System.Drawing.Point(4, 103);
+            this.radioButtonRectangle.Name = "radioButtonRectangle";
+            this.radioButtonRectangle.Size = new System.Drawing.Size(102, 24);
+            this.radioButtonRectangle.TabIndex = 2;
+            this.radioButtonRectangle.Text = "Prostokąt";
+            this.radioButtonRectangle.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonElipse
+            // 
+            this.radioButtonElipse.AutoSize = true;
+            this.radioButtonElipse.Location = new System.Drawing.Point(4, 148);
+            this.radioButtonElipse.Name = "radioButtonElipse";
+            this.radioButtonElipse.Size = new System.Drawing.Size(77, 24);
+            this.radioButtonElipse.TabIndex = 3;
+            this.radioButtonElipse.Text = "Elipsa";
+            this.radioButtonElipse.UseVisualStyleBackColor = true;
+            // 
+            // nowyToolStripMenuItem
+            // 
+            this.nowyToolStripMenuItem.Name = "nowyToolStripMenuItem";
+            this.nowyToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.nowyToolStripMenuItem.Text = "Nowy";
+            this.nowyToolStripMenuItem.Click += new System.EventHandler(this.nowyToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -209,6 +280,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWidth)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,6 +304,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numericUpDownWidth;
         private System.Windows.Forms.ColorDialog colorDialog;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton radioButtonElipse;
+        private System.Windows.Forms.RadioButton radioButtonRectangle;
+        private System.Windows.Forms.RadioButton radioButtonLine;
+        private System.Windows.Forms.RadioButton radioButtonCurve;
+        private System.Windows.Forms.ToolStripMenuItem nowyToolStripMenuItem;
     }
 }
 
