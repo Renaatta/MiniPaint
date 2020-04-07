@@ -18,10 +18,15 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        Graphics graphics;
+        Point tmpPoint;
+        Pen myPen;
         public Form1()
         {
             InitializeComponent();
             openFileDialog.Filter = saveFileDialog.Filter = "Grafika BMP|*.bmp|Grafika PNG|*.png|Grafika JPG|*.jpg";
+            myPen = new Pen(Color.Red, 5);
+            myPen.EndCap = myPen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -34,7 +39,7 @@ namespace WindowsFormsApp1
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 pictureBoxMyImage.Image = Image.FromFile(openFileDialog.FileName);
-
+                graphics = Graphics.FromImage(pictureBoxMyImage.Image);
             }
         }
 
@@ -59,6 +64,31 @@ namespace WindowsFormsApp1
                 }
                 pictureBoxMyImage.Image.Save(saveFileDialog.FileName, imageFormat);
             }
+        }
+
+        private void pictureBoxMyImage_MouseDown(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                //graphics.DrawEllipse(new Pen(Color.Red), e.X, e.Y, 20, 20);
+                //pictureBoxMyImage.Refresh();
+                tmpPoint = e.Location;
+            }
+        }
+
+        private void pictureBoxMyImage_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                graphics.DrawLine(myPen, tmpPoint, e.Location);
+                pictureBoxMyImage.Refresh();
+            }
+            tmpPoint = e.Location;   
+        }
+
+        private void pictureBoxMyImage_MouseUp(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }
